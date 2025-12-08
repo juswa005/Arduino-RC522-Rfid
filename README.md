@@ -48,7 +48,7 @@ This project uses an **RFID-RC522 module** with Arduino to read RFID tags and di
 1. Install Arduino IDE from [https://www.arduino.cc/en/software](https://www.arduino.cc/en/software)
 2. Install `MFRC522` library via Arduino Library Manager
 3. Connect your RFID module according to the wiring table
-4. Upload the [test code]() sketch to your Arduino
+4. Upload the [test code](Docs/testcode.ini) sketch to your Arduino
 
 ---
 
