@@ -38,8 +38,9 @@ This project uses an **RFID-RC522 module** with Arduino to read RFID tags and di
 | MISO      | 12          |
 | RST       | 9           |
 | 3.3V      | 3.3V        |
-| GND       | GND         |
+| GND       | GND         |  
 
+![Schematic](Docs/Schematic_RFID.jpg)  
 > **Important:** Use 3.3V only, not 5V.
 
 ---
