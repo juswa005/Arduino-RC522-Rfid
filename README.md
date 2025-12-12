@@ -32,7 +32,7 @@ This project uses an **RFID-RC522 module** with Arduino to read RFID tags and di
 ## Wiring / Setup
 | RC522 Pin | Arduino Pin |
 |-----------|-------------|
-| SDA       | 10          |
+| SDA or SS | 10          |
 | SCK       | 13          |
 | MOSI      | 11          |
 | MISO      | 12          |
