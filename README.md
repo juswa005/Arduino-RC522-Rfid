@@ -41,8 +41,47 @@ This project uses an **RFID-RC522 module** with Arduino to read RFID tags and di
 | GND       | GND         |  
 
 ![Schematic](Docs/Schematic_RFID.jpg)  
-> **Important:** Use 3.3V only, not 5V.
+> **Important:** Use 3.3V only, not 5V.  
+---
+## Code
 
+### Code for Testing (testcode.ino)
+```cpp
+#include <SPI.h>
+#include <MFRC522.h>
+
+#define SS_PIN 10   // SDA
+#define RST_PIN 9
+
+MFRC522 rfid(SS_PIN, RST_PIN);
+
+void setup() {
+  Serial.begin(9600);
+  SPI.begin();        // Init SPI bus
+  rfid.PCD_Init();    // Init MFRC522
+  Serial.println("Scan RFID tag...");
+}
+
+void loop() {
+  // Look for new cards
+  if (!rfid.PICC_IsNewCardPresent()) return;
+  if (!rfid.PICC_ReadCardSerial()) return;
+
+  Serial.print("UID Tag: ");
+  for (byte i = 0; i < rfid.uid.size; i++) {
+    Serial.print(rfid.uid.uidByte[i] < 0x10 ? "0" : "");
+    Serial.print(rfid.uid.uidByte[i], HEX);
+    Serial.print(" ");
+  }
+  Serial.println();
+  
+  // Halt PICC
+  rfid.PICC_HaltA();
+  // Stop encryption on PCD
+  rfid.PCD_StopCrypto1();
+}
+
+```  
 ---
 
 ## Installation
@@ -57,6 +96,14 @@ This project uses an **RFID-RC522 module** with Arduino to read RFID tags and di
 1. Open Arduino Serial Monitor (baud rate: 9600)
 2. Place RFID tag near the module
 3. Serial Monitor will display the UID like:
+   ```text
+    Scan RFID tag...
+    UID Tag: 04 A3 1B 5F
+    Scan RFID tag...
+    UID Tag: 12 7C 9D 4A
+    Scan RFID tag...
+    UID Tag: 08 2F C1 7E
+    ```
 
 
 ---
