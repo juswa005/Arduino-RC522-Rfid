@@ -70,6 +70,11 @@ This project uses an **RFID-RC522 module** with Arduino to read RFID tags and di
 
 ---
 
+## Related Repository
+For C# app integration and setup, see: [Arduino RFID RC522 Winforms Integration](https://github.com/juswa005/Arduino-RC522-Rfid-Winforms-Integration-.git)
+
+---
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
 
